@@ -1,0 +1,94 @@
+{
+  "peliculas": [
+    {
+      "id": 1,
+      "nombre": "El Padrino",
+      "director": "Francis Ford Coppola",
+      "clasificacion": "R"
+    },
+    {
+      "id": 2,
+      "nombre": "Forrest Gump",
+      "director": "Robert Zemeckis",
+      "clasificacion": "PG-13"
+    },
+    {
+      "id": 3,
+      "nombre": "Inception",
+      "director": "Christopher Nolan",
+      "clasificacion": "PG-13"
+    },
+    {
+      "id": 4,
+      "nombre": "El Caballero Oscuro",
+      "director": "Christopher Nolan",
+      "clasificacion": "PG-13"
+    },
+    {
+      "id": 5,
+      "nombre": "Pulp Fiction",
+      "director": "Quentin Tarantino",
+      "clasificacion": "R"
+    },
+    {
+      "id": 6,
+      "nombre": "La Lista de Schindler",
+      "director": "Steven Spielberg",
+      "clasificacion": "R"
+    },
+    {
+      "id": 7,
+      "nombre": "El Señor de los Anillos: La Comunidad del Anillo",
+      "director": "Peter Jackson",
+      "clasificacion": "PG-13"
+    },
+    {
+      "id": 8,
+      "nombre": "Matrix",
+      "director": "Lana Wachowski, Lilly Wachowski",
+      "clasificacion": "R"
+    },
+    {
+      "id": 9,
+      "nombre": "Fight Club",
+      "director": "David Fincher",
+      "clasificacion": "R"
+    },
+    {
+      "id": 10,
+      "nombre": "El Silencio de los Inocentes",
+      "director": "Jonathan Demme",
+      "clasificacion": "R"
+    },
+    {
+      "id": "a3fd",
+      "nombre": "sdfsdfsd",
+      "director": "fsdfsdf",
+      "clasificacion": "PG"
+    },
+    {
+      "id": "4808",
+      "nombre": "asdasdasdasdasdas",
+      "director": "asdasd",
+      "clasificacion": "PG-13"
+    },
+    {
+      "id": "93da",
+      "nombre": "por eje",
+      "director": "paospdaos",
+      "clasificacion": "R"
+    },
+    {
+      "id": "a0c7",
+      "nombre": "Prueb",
+      "director": "No che, uno",
+      "clasificacion": "PG"
+    },
+    {
+      "id": "ced8",
+      "nombre": "asdasdasdasd",
+      "director": "No che, uno",
+      "clasificacion": "PG"
+    }
+  ]
+}
