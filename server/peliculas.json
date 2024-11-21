@@ -1,94 +1,94 @@
 {
   "peliculas": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "El Padrino",
       "director": "Francis Ford Coppola",
       "clasificacion": "R"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Forrest Gump",
       "director": "Robert Zemeckis",
       "clasificacion": "PG-13"
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Inception",
       "director": "Christopher Nolan",
       "clasificacion": "PG-13"
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "El Caballero Oscuro",
       "director": "Christopher Nolan",
       "clasificacion": "PG-13"
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Pulp Fiction",
       "director": "Quentin Tarantino",
       "clasificacion": "R"
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "La Lista de Schindler",
       "director": "Steven Spielberg",
       "clasificacion": "R"
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "El Señor de los Anillos: La Comunidad del Anillo",
       "director": "Peter Jackson",
       "clasificacion": "PG-13"
     },
     {
-      "id": 8,
+      "id": "8",
       "nombre": "Matrix",
       "director": "Lana Wachowski, Lilly Wachowski",
       "clasificacion": "R"
     },
     {
-      "id": 9,
+      "id": "9",
       "nombre": "Fight Club",
       "director": "David Fincher",
       "clasificacion": "R"
     },
     {
-      "id": 10,
+      "id": "10",
       "nombre": "El Silencio de los Inocentes",
       "director": "Jonathan Demme",
       "clasificacion": "R"
     },
     {
-      "id": "a3fd",
-      "nombre": "sdfsdfsd",
-      "director": "fsdfsdf",
-      "clasificacion": "PG"
+      "id": "8e66",
+      "nombre": "Peli prueba 1",
+      "director": "Probador 1",
+      "clasificacion": "G"
     },
     {
-      "id": "4808",
-      "nombre": "asdasdasdasdasdas",
-      "director": "asdasd",
+      "id": "1c0d",
+      "nombre": "abr de nuex",
+      "director": "aosdnasd",
       "clasificacion": "PG-13"
     },
     {
-      "id": "93da",
-      "nombre": "por eje",
-      "director": "paospdaos",
-      "clasificacion": "R"
-    },
-    {
-      "id": "a0c7",
+      "id": "c1d8",
       "nombre": "Prueb",
       "director": "No che, uno",
+      "clasificacion": "NC-17"
+    },
+    {
+      "id": "8686",
+      "nombre": "Prubea offline",
+      "director": "offline",
       "clasificacion": "PG"
     },
     {
-      "id": "ced8",
-      "nombre": "asdasdasdasd",
-      "director": "No che, uno",
-      "clasificacion": "PG"
+      "id": "7fa9",
+      "nombre": "soy una reatota??",
+      "director": "simn si eres",
+      "clasificacion": "R"
     }
   ]
 }

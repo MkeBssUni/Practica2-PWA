@@ -106,9 +106,24 @@ self.addEventListener('sync', (event) => {
 
 // Función para sincronizar las solicitudes POST pendientes
 async function syncPostRequests() {
+    console.log('Sincronizando solicitudes POST........');
     const db = await getDatabase();
     const tx = db.transaction('post-requests', 'readonly');
-    const requests = await tx.objectStore('post-requests').getAll();
+    const store = tx.objectStore('post-requests');
+
+    // Obtén las solicitudes pendientes
+    const requests = await new Promise((resolve, reject) => {
+        const request = store.getAll();
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+    });
+
+    console.log('Solicitudes pendientes:', requests);
+
+    if (!requests || requests.length === 0) {
+        console.log('No hay solicitudes pendientes para sincronizar.');
+        return;
+    }
 
     await Promise.all(
         requests.map(async (req) => {
@@ -154,3 +169,9 @@ function getDatabase() {
     });
 }
 
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SYNC_POST_REQUESTS') {
+        console.log('Recibido mensaje para sincronizar peticiones pendientes.');
+        syncPostRequests(); // Llama la función para sincronizar
+    }
+});

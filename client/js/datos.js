@@ -1,3 +1,8 @@
+
+monitorConnection();
+
+
+
 // Cargar películas desde el servidor y mostrarlas en la pantalla
 async function loadMovies() {
   try {
@@ -99,6 +104,7 @@ function registerSync() {
 
 // Escuchar el evento de envío del formulario
 const form = document.getElementById('add-movie-form');
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -108,46 +114,47 @@ form.addEventListener('submit', async (e) => {
 
   // Validar campos del formulario
   if (!movieName || !movieDirector || !movieRating) {
-    alert('Todos los campos son obligatorios');
-    return;
+      alert('Todos los campos son obligatorios');
+      return;
   }
 
   const newMovie = {
-    nombre: movieName,
-    director: movieDirector,
-    clasificacion: movieRating,
+      nombre: movieName,
+      director: movieDirector,
+      clasificacion: movieRating,
   };
 
   try {
-    const response = await fetch('http://localhost:3000/peliculas', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newMovie),
-    });
+      const response = await fetch('http://localhost:3000/peliculas', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newMovie),
+      });
 
-    if (response.ok) {
-      alert('Película agregada con éxito');
-      form.reset();
-      loadMovies();
-    } else {
-      throw new Error('Error al agregar la película');
-    }
+      if (response.ok) {
+          alert('Película agregada con éxito');
+          form.reset();
+          await loadMovies(); // Recargar las películas desde el servidor
+      } else {
+          throw new Error('Error al agregar la película');
+      }
   } catch (error) {
-    console.error('Sin conexión, guardando localmente:', error);
+      console.error('Sin conexión, guardando localmente:', error);
 
-    const db = await getDatabaseClient();
-    const tx = db.transaction('post-requests', 'readwrite');
-    tx.objectStore('post-requests').add({
-      url: 'http://localhost:3000/peliculas',
-      body: newMovie,
-    });
-    alert('Película guardada localmente. Se sincronizará cuando haya conexión.');
-    registerSync(); // Registrar sincronización
-    await loadMoviesFromIndexedDB(); // Mostrar inmediatamente en pantalla
+      const db = await getDatabaseClient();
+      const tx = db.transaction('post-requests', 'readwrite');
+      tx.objectStore('post-requests').add({
+          url: 'http://localhost:3000/peliculas',
+          body: newMovie,
+      });
+      alert('Película guardada localmente. Se sincronizará cuando haya conexión.');
+      registerSync(); // Registrar sincronización
+      await loadMoviesFromIndexedDB(); // Mostrar las películas offline
   }
 });
+
 
 // Escuchar mensajes del Service Worker
 if ('serviceWorker' in navigator) {
@@ -173,3 +180,30 @@ function removeSyncedMovieFromScreen(id) {
 
 // Cargar las películas al iniciar la aplicación
 loadMovies();
+
+
+function monitorConnection() {
+  async function updateConnectionStatus() {
+      if (navigator.onLine) {
+          console.log("Conexión establecida. Volviendo a cargar las películas.");
+          
+          // Enviar mensaje al Service Worker para sincronizar
+          if ('serviceWorker' in navigator) {
+              const registration = await navigator.serviceWorker.ready;
+              registration.active.postMessage({ type: 'SYNC_POST_REQUESTS' });
+          }
+
+          loadMovies(); // Recarga las películas desde el servidor
+      } else {
+          console.log("Sin conexión. Estás en modo offline.");
+      }
+  }
+
+  // Escucha los cambios de conexión
+  window.addEventListener("online", updateConnectionStatus);
+  window.addEventListener("offline", updateConnectionStatus);
+
+  // Verifica el estado inicial
+  updateConnectionStatus();
+}
+
